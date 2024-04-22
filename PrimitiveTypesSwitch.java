@@ -9,18 +9,40 @@
  * Primitive Types used in Switch
  */
 
-
 void main(){
     boolean shouldILearnSomethingNew = true;
 
     String surpriseMe = switch(shouldILearnSomethingNew){
-        case true -> "https://jdk.java.net/23/";
-        case false -> "https://jdk.java.net/21/";
+        case true -> {
+            String version = getJavaBleedingEdgeVersion();
+            yield String.format("https://jdk.java.net/%s/", version);
+        }
+        case false -> {
+            String version = getJavaLatestLTSVersion();
+            yield String.format("https://jdk.java.net/%s/", version);
+        }
     };
     navigate(surpriseMe);
+    /* 
+    *  Ternary conditional operator (?:) does not support statements {}
+    *    JLS reference
+           https://docs.oracle.com/javase/specs/jls/se8/html/jls-15.html#jls-15.25
+
+    surpriseMe = shouldILearnSomethingNew ? 
+    { return "https://jdk.java.net/23/";} 
+    : "https://jdk.java.net/21/"; 
+    */
 }
 
 private void navigate(String URL){
     // TODO: open website
     System.out.println(URL);
+}
+
+private String getJavaBleedingEdgeVersion(){
+    return "23";
+}
+
+private String getJavaLatestLTSVersion(){
+    return "21";
 }
