@@ -13,7 +13,7 @@
 void main(){
     boolean shouldILearnSomethingNew = true;
 
-    String surpriseMe = switch(shouldILeanSomethingNew){
+    String surpriseMe = switch(shouldILearnSomethingNew){
         case true -> "https://jdk.java.net/23/";
         case false -> "https://jdk.java.net/21/";
     };
