@@ -31,6 +31,6 @@ void main(){
     }
 }
 
-say(String s){
+private void say(String s){
     System.out.println(s);
 }
