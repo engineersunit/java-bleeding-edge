@@ -1,7 +1,5 @@
 void main(){
-
- IntStream
-  .range(1, 10)
+  IntStream.range(1, 10)
   .boxed()
   .gather(
     Gatherers
